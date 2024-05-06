@@ -1,27 +1,54 @@
-# AssemblyCrashCourse
-Code-along Examples for the
-[6502 Assembly Crash Course Video](https://www.youtube.com/watch?v=yEiNs7pKNh8).
+# 6502 AssemblyCrashCourse
+
+Code-along Examples for the [6502 Assembly Crash Course Video](https://www.youtube.com/watch?v=yEiNs7pKNh8).
 
 ## Building the Examples
 
-### Via VSCode
-The examples in this project are meant to be built using VSCode via the ca65
-Macro Assembler Language extension. I made a
-[YouTube video](https://www.youtube.com/watch?v=RtY5FV5TrIU&t=0s) that explains
-how to set up a windows development environment.
-
-### Via cl65
-You can also build the examples directly from the command-line using the cl65
-binary distrubuted as part of CC65. Here's an example of how to build the first
-example from the repository root:
-
+```shell
+$ cl65 --verbose --target nes -o wrapper.nes wrapper.s examples/01_XandY.s
 ```
-$ cl65 --verbose --target nes wrapper.s examples/01_XandY.s ; mv wrapper wrapper.nes
-```
-
-Note: The "wrapper" code does some basic setup and executes the routine defined
-by the example files.
 
 ## License
+
 MIT
 
+## Value types
+
+- `%` números binários
+  - `%00010000`
+- `$` números hexadecimais
+  - `$00FF`
+- números decimais
+  - `35`
+
+## Addressing modes
+
+### Immediate addressing
+
+- valores acompanhados de `#` são chamados de valores imediatos ou constantes.
+  - estes valores tem tamanho máximo de 1 byte
+  - `#10`
+
+### ZeroPage addressing
+
+- Endereçamento utilizando apenas 8 bits / 1 byte que indicam o uso da memória ZeroPage
+  - `stx $01`
+
+### Implicit addressing
+
+- Endereçamento implícito (sem necessidade de utilizar um operando para apontar o endereço)
+  - `inx ; incrementa 1 no registrador X`
+
+## ZeroPage Memory
+
+- O intervalo de memória `$0000-$00FF` (256 bytes) é chamado de ZeroPage memory
+- Instruções presentes neste bloco de memória vão rodar mais rápido que instruções do resto da memória
+- A utilização desse intervalo é feita através da utilização do endereço de memória com apenas 8 bits, chamado endereçamento imediato (immediate addressing)
+
+```s
+; Armazenando registrador X no endereço ZeroPage $01
+stx $01
+
+; Carregando valor do endereço ZeroPage $00 no registrador X
+ldx $00
+```
