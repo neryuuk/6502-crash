@@ -2,24 +2,20 @@
 .segment "CODE"
 
 .proc Main
-  ; Initialize some RAM
-  ldx #$B2
-  stx $00
-  ldx #$F5
-  stx $01
+  ldx #178                      ; carrega valor 178 em X
+  stx $00                       ; guarda X em $00
+  ldx #245                      ; carrega valor 245 em X
+  stx $01                       ; guarda X em $01
 
-  ; Add $00 and $01
-  lda $00
-  clc
-  adc $01
+  lda $00                       ; carrega valor de $00 em A
+  clc                           ; limpa a carry flag (C)
+  adc $01                       ; soma valor de A + $01 + carry flag
 
-  ; Store the first byte of the result to $02
-  sta $02
+  sta $02                       ; guarda o primeiro byte da conta em $02
 
-  ; Add the carry bit to zero and store it into $03
-  lda #0
-  adc #0
-  sta $03
+  lda #0                        ; carrega valor 0 em a
+  adc #0                        ; soma valor de A + 0 + carry flag
+  sta $03                       ; armazena o segundo byte da conta
 
   rts
 .endproc
