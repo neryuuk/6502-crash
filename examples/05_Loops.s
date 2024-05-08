@@ -30,6 +30,6 @@ store_hp:
   cpx #8
   bne multi_attack_loop
 
-  ; Loop compete, return from subroutine
+  ; Loop complete, return from subroutine
   rts
 .endproc
