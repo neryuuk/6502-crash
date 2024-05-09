@@ -72,14 +72,14 @@ stx $01                         ; armazenar valor de X no endereço de memória 
 ```asm
 lda $00                         ; carregar valor do endereço $00 no acumulador (A)
 clc                             ; limpar flag de carry
-adc $01                         ; somar o valor do endereço $01 ao acumulador, junto com a flag de carry
+adc $01                         ; somar o valor de $01 + A + carry flag
 sta $02                         ; armazenar o valor de A no endereço $02
 ```
 
 ### Guardando o valor da flag de carry
 
 ```asm
-lda #0                          ; zerar o valor do acumulador
-adc #0                          ; somar 0 ao acumulador, junto com a flag de carry
+lda #0                          ; zerar o valor do acumulador (A)
+adc #0                          ; somar 0 + A + carry flag
 sta $03                         ; armazenar o valor de A no endereço $03
 ```
