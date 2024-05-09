@@ -14,12 +14,12 @@ MIT
 
 ## Value types
 
-- `%` números binários
-  - `%00010000`
-- `$` números hexadecimais
-  - `$00FF`
-- números decimais
-  - `35`
+```asm
+lda #35                         ;   representa números decimais
+lda #%00010000                  ; % representa números binários
+lda #$00FF                      ; $ representa números hexadecimais
+lda #$0F                        ; # representa um valor constante / imediato
+```
 
 ## Addressing modes
 
