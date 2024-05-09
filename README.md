@@ -46,11 +46,8 @@ MIT
 - A utilização desse intervalo é feita através da utilização do endereço de memória com apenas 8 bits, chamado endereçamento imediato (immediate addressing)
 
 ```asm
-; Armazenando registrador X no endereço ZeroPage $01
-stx $01
-
-; Carregando valor do endereço ZeroPage $00 no registrador X
-ldx $00
+stx $01                         ; Armazenando registrador X no endereço ZeroPage $01
+ldx $00                         ; Carregando valor do endereço ZeroPage $00 no registrador X
 ```
 
 ## Realizando cálculos
@@ -64,25 +61,25 @@ ldx $00
 ### Inicializando a memória
 
 ```asm
-ldx #172 ; carregar a constante 172 no registrador X
-stx $00  ; armazenar valor de X no endereço de memória $00
-ldx #245 ; carregar a constante 245 no registrador X
-stx $01  ; armazenar valor de X no endereço de memória $01
+ldx #172                        ; carregar a constante 172 no registrador X
+stx $00                         ; armazenar valor de X no endereço de memória $00
+ldx #245                        ; carregar a constante 245 no registrador X
+stx $01                         ; armazenar valor de X no endereço de memória $01
 ```
 
 ### Realizando a operação
 
 ```asm
-lda $00  ; carregar valor do endereço $00 no acumulador (A)
-clc      ; limpar flag de carry
-adc $01  ; somar o valor do endereço $01 ao acumulador, junto com a flag de carry
-sta $02  ; armazenar o valor de A no endereço $02
+lda $00                         ; carregar valor do endereço $00 no acumulador (A)
+clc                             ; limpar flag de carry
+adc $01                         ; somar o valor do endereço $01 ao acumulador, junto com a flag de carry
+sta $02                         ; armazenar o valor de A no endereço $02
 ```
 
 ### Guardando o valor da flag de carry
 
 ```asm
-lda #0   ; zerar o valor do acumulador
-adc #0   ; somar 0 ao acumulador, junto com a flag de carry
-sta $03  ; armazenar o valor de A no endereço $03
+lda #0                          ; zerar o valor do acumulador
+adc #0                          ; somar 0 ao acumulador, junto com a flag de carry
+sta $03                         ; armazenar o valor de A no endereço $03
 ```
